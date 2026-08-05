@@ -1,0 +1,40 @@
+{
+  "shopId": "naver_shopping",
+  "shopName": "네이버쇼핑",
+  "packageName": "com.nhn.android.search",
+  "version": "1.0",
+  "steps": [
+    {
+      "stepId": "click_buy",
+      "description": "네이버페이 구매하기 버튼 클릭",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "TEXT", "value": "NPay 구매", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "구매하기", "index": 0 },
+        { "type": "RESOURCE_ID", "value": "buy_button", "index": 0 }
+      ],
+      "waitAfterMs": 800,
+      "retryCount": 5
+    },
+    {
+      "stepId": "proceed_order",
+      "description": "주문하기 / 결제하기",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "TEXT", "value": "결제하기", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "원 결제하기", "index": 0 }
+      ],
+      "waitAfterMs": 1000,
+      "retryCount": 5
+    }
+  ],
+  "queueDetectors": [
+    { "type": "TEXT_CONTAINS", "value": "접속 대기중", "index": 0 },
+    { "type": "TEXT_CONTAINS", "value": "대기번호", "index": 0 }
+  ],
+  "paymentFinalTrigger": {
+    "type": "TEXT_CONTAINS",
+    "value": "결제하기",
+    "index": 0
+  }
+}

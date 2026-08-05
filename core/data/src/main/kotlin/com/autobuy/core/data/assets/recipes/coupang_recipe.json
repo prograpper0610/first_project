@@ -1,0 +1,116 @@
+{
+  "shopId": "coupang",
+  "shopName": "쿠팡",
+  "packageName": "com.coupang.mobile",
+  "version": "2.1",
+  "steps": [
+    {
+      "stepId": "click_buy",
+      "description": "구매하기 버튼 클릭",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "RESOURCE_ID", "value": "com.coupang.mobile:id/btn_buy_now", "index": 0 },
+        { "type": "TEXT", "value": "바로구매", "index": 0 },
+        { "type": "TEXT", "value": "구매하기", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "구매", "index": 0 }
+      ],
+      "waitAfterMs": 800,
+      "retryCount": 5,
+      "retryIntervalMs": 300
+    },
+    {
+      "stepId": "select_address",
+      "description": "배송지 선택",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "RESOURCE_ID", "value": "com.coupang.mobile:id/delivery_address_section", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "배송지", "index": 0 }
+      ],
+      "waitAfterMs": 500,
+      "retryCount": 3,
+      "retryIntervalMs": 300,
+      "isOptional": true
+    },
+    {
+      "stepId": "enter_recipient",
+      "description": "수령인 이름 입력",
+      "action": "SET_TEXT",
+      "selectors": [
+        { "type": "RESOURCE_ID", "value": "com.coupang.mobile:id/recipient_name", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "수령인", "index": 0 }
+      ],
+      "inputType": "RECIPIENT_NAME",
+      "waitAfterMs": 200,
+      "retryCount": 3,
+      "retryIntervalMs": 300,
+      "isOptional": true
+    },
+    {
+      "stepId": "enter_phone",
+      "description": "연락처 입력",
+      "action": "SET_TEXT",
+      "selectors": [
+        { "type": "RESOURCE_ID", "value": "com.coupang.mobile:id/phone_number", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "연락처", "index": 0 }
+      ],
+      "inputType": "PHONE_NUMBER",
+      "waitAfterMs": 200,
+      "retryCount": 3,
+      "retryIntervalMs": 300,
+      "isOptional": true
+    },
+    {
+      "stepId": "scroll_to_payment",
+      "description": "결제 수단 섹션으로 스크롤",
+      "action": "SCROLL_DOWN",
+      "selectors": [
+        { "type": "CLASS_NAME", "value": "androidx.recyclerview.widget.RecyclerView", "index": 0 }
+      ],
+      "waitAfterMs": 400,
+      "retryCount": 2,
+      "retryIntervalMs": 200,
+      "isOptional": true
+    },
+    {
+      "stepId": "select_payment",
+      "description": "결제 수단 선택",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "RESOURCE_ID", "value": "com.coupang.mobile:id/payment_method_section", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "결제수단", "index": 0 }
+      ],
+      "waitAfterMs": 500,
+      "retryCount": 3,
+      "retryIntervalMs": 300,
+      "isOptional": true
+    },
+    {
+      "stepId": "proceed_to_payment",
+      "description": "결제 진행 버튼",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "RESOURCE_ID", "value": "com.coupang.mobile:id/btn_proceed_payment", "index": 0 },
+        { "type": "TEXT", "value": "결제하기", "index": 0 },
+        { "type": "TEXT", "value": "주문하기", "index": 0 }
+      ],
+      "waitAfterMs": 1000,
+      "retryCount": 5,
+      "retryIntervalMs": 500,
+      "scrollToView": true
+    }
+  ],
+  "queueDetectors": [
+    { "type": "TEXT_CONTAINS", "value": "대기중", "index": 0 },
+    { "type": "TEXT_CONTAINS", "value": "잠시만 기다려", "index": 0 },
+    { "type": "TEXT_CONTAINS", "value": "대기 번호", "index": 0 },
+    { "type": "CLASS_NAME", "value": "android.widget.ProgressBar", "index": 0 }
+  ],
+  "paymentFinalTrigger": {
+    "type": "TEXT",
+    "value": "결제하기",
+    "index": 0
+  },
+  "antiBotKeywords": [
+    "보안문자", "캡차", "CAPTCHA", "자동입력 방지", "robot", "verify", "자동화"
+  ]
+}

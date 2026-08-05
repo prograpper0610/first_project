@@ -1,0 +1,55 @@
+{
+  "shopId": "generic_custom",
+  "shopName": "범용 테스트 / 웹뷰 템플릿",
+  "packageName": "browser",
+  "version": "1.0",
+  "steps": [
+    {
+      "stepId": "click_buy",
+      "description": "구매 / 결제 / 신청 버튼 클릭",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "TEXT_CONTAINS", "value": "구매", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "결제", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "신청", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "Buy", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "Order", "index": 0 }
+      ],
+      "waitAfterMs": 500,
+      "retryCount": 5
+    },
+    {
+      "stepId": "fill_custom_field_1",
+      "description": "사용자 동적 커스텀 필드 1 입력",
+      "action": "SET_TEXT",
+      "selectors": [
+        { "type": "CLASS_NAME", "value": "android.widget.EditText", "index": 0 }
+      ],
+      "inputType": "CUSTOM_FIELD",
+      "customKey": "option1",
+      "isOptional": true,
+      "waitAfterMs": 200
+    },
+    {
+      "stepId": "proceed_order",
+      "description": "최종 결제 / 주문 실행",
+      "action": "CLICK",
+      "selectors": [
+        { "type": "TEXT_CONTAINS", "value": "주문하기", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "결제하기", "index": 0 },
+        { "type": "TEXT_CONTAINS", "value": "Submit", "index": 0 }
+      ],
+      "waitAfterMs": 800,
+      "retryCount": 3
+    }
+  ],
+  "queueDetectors": [
+    { "type": "TEXT_CONTAINS", "value": "대기중", "index": 0 },
+    { "type": "TEXT_CONTAINS", "value": "waiting", "index": 0 }
+  ],
+  "paymentFinalTrigger": {
+    "type": "TEXT_CONTAINS",
+    "value": "결제하기",
+    "index": 0
+  }
+}

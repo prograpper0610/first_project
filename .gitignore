@@ -1,0 +1,70 @@
+# ============================================================
+# AutoBuy Assistant — Android / Kotlin .gitignore
+# ============================================================
+
+# --- Built application files ---
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# --- Files for the ART/DALVIK VM ---
+*.dex
+
+# --- Java class files ---
+*.class
+
+# --- Generated files ---
+bin/
+gen/
+out/
+build/
+app/build/
+core/common/build/
+core/data/build/
+core/security/build/
+core/accessibility/build/
+feature/config/build/
+feature/dashboard/build/
+feature/recorder/build/
+**/build/
+**/captures/
+
+# --- Android Studio & JetBrains IDE ---
+.idea/
+*.iml
+.navigation/
+workspace.xml
+tasks.xml
+gradle.xml
+assetCatalogCompiler.xml
+shelf/
+caches/
+
+# --- Local Properties (개인 PC 경로 포함 - GitHub 업로드 금지) ---
+local.properties
+
+# --- Gradle files & Cache ---
+.gradle/
+buildOutputCleanup/
+gradle-app.setting
+
+# --- Signing secrets & Keystore (서명 키 파일 - GitHub 업로드 금지) ---
+*.jks
+*.keystore
+*.p12
+*.pem
+*.pepk
+*.pk8
+
+# --- OS generated files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- Log files ---
+*.log
